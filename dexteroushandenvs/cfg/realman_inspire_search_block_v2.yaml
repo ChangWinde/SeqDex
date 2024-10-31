@@ -5,21 +5,21 @@ env:
   numEnvs: 1
   envSpacing: 1.25
   episodeLength: 210
-  handResetStep: 10
+  handResetStep: 15
   enableDebugVis: False
-  enable_wandb: True
+  enable_wandb: False
   enable_camera_sensors: True
-  enable_lego_curriculum: True
-  legoCurriculumInterval: 200
+  enable_lego_curriculum: False
+  legoCurriculumInterval: 150
   aggregateMode: 1
-  num_lego_suit: 4
-  num_max_suit: 9
+  num_lego_suit: 11
+  num_max_suit: 11
 
   stiffnessScale: 1.0
   forceLimitScale: 1.0
   useRelativeControl: False
-  dofSpeedScale: 3.0
-  actionsMovingAverage: 0.8
+  dofSpeedScale: 5.0
+  actionsMovingAverage: 0.6
   controlFrequencyInv: 1 # 60 Hz
 
   startPositionNoise: 0.0
@@ -159,21 +159,16 @@ task:
 sim:
   substeps: 2
   physx:
-    # num_threads: 64
-    num_threads: 4
-    use_gpu: True
+    num_threads: 64
     solver_type: 1  # 0: pgs, 1: tgs
-    # num_position_iterations: 16
-    num_position_iterations: 8
+    num_position_iterations: 16
     num_velocity_iterations: 0
     contact_offset: 0.02
     rest_offset: 0.00
     bounce_threshold_velocity: 0.002
     max_depenetration_velocity: 1000.0
-    # default_buffer_size_multiplier: 15.0
-    default_buffer_size_multiplier: 5.0
-    contact_collection: 0 # 0: CC_NEVER (don't collect contact info), 1: CC_LAST_SUBSTEP (collect only contacts on last substep), 2: CC_ALL_SUBSTEPS (default - all contacts)
-    # contact_collection: 1 # 0: CC_NEVER (don't collect contact info), 1: CC_LAST_SUBSTEP (collect only contacts on last substep), 2: CC_ALL_SUBSTEPS (default - all contacts)
+    default_buffer_size_multiplier: 15.0
+    contact_collection: 1 # 0: CC_NEVER (don't collect contact info), 1: CC_LAST_SUBSTEP (collect only contacts on last substep), 2: CC_ALL_SUBSTEPS (default - all contacts)
   flex:
     num_outer_iterations: 5
     num_inner_iterations: 20

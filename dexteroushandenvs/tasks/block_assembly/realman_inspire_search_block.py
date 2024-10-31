@@ -763,7 +763,9 @@ class InspireSearchBlock(BaseTask):
         self.extras['emergency_reward'] += emergency_reward[0]
         self.extras['z_lift'] = z_lift[0]
         self.extras['xy_move'] = xy_move[0]
-        self.extras['success'] = 100.0 if self.seg_pos[0, 2] > self.seg_start_pos[0, 2] + 0.9*target_lift_height else 0.0
+        self.extras['success'] = 100.0 if self.seg_pos[0, 2] > self.seg_start_pos[0, 2] + 0.8*target_lift_height else 0.0
+        # self.extras['success'] = 100.0 if self.seg_pos[0, 2] > self.seg_start_pos[0, 2] + 0.5*target_lift_height else 0.0
+        # self.extras['success'] = 100.0 if self.seg_pos[0, 2] > 0.9 else 0.0
         if self.extras['success'] > 0 and self.extras['success_length'] == self.max_episode_length:
             self.extras['success_length'] = self.progress_buf[0]
 
